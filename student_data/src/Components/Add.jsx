@@ -15,150 +15,145 @@ function Add({ handleform }) {
   const [pin, setPin] = useState("");
 
   return (
-    <div style={{marginTop:"4%"}} >
-        <div style={{display:"grid",gridTemplateColumns:"1fr 1fr"}}>
-        <label for="name">Add Student</label>
-        <div className="date-time"></div>
-        </div>
-      
-			<br />
-            <div className="info-input" style={{display:"grid",gridTemplateColumns:"1fr 1fr 1fr",gap:"1%"}}>
-            <input
-        required={true}
-        className="text-gray-800 pl-2 rounded-lg"
-        type="text"
-        placeholder="First Name"
-        id="first-name"
-        onChange={(e) => {
-          setFirstName(e.target.value);
-        }}
-      />
-      <input
-        required={true}
-        className="text-gray-800 pl-2 rounded-lg"
-        type="text"
-        placeholder="Middle Name"
-        id="middle-name"
-        onChange={(e) => {
-          setMiddleName(e.target.value);
-        }}
-      />
-      <input
-        required={true}
-        className="text-gray-800 pl-2 rounded-lg"
-        type="text"
-        placeholder="Last Name"
-        id="last-name"
-        onChange={(e) => {
-          setLastName(e.target.value);
-        }}
-      />
-      <input
-        required={true}
-        className="text-gray-800 pl-2 rounded-lg"
-        type="number"
-        placeholder="Enter Class"
-        onChange={(e) => {
-          setBatch(e.target.value);
-        }}
-      />
-      <input
-        required={true}
-        className="text-gray-800 pl-2 rounded-lg"
-        type="division"
-        placeholder="Enter division"
-        onChange={(e) => {
-          setDivision(e.target.value);
-        }}
-      />
-      <input
-        required={true}
-        className="text-gray-800 pl-2 rounded-lg"
-        type="number"
-        placeholder="Enter roll Number"
-        onChange={(e) => {
-          setRoll(e.target.value);
-        }}
-      />
-            </div>
-      <br/>
+    <div className="add">
+      <div className="same">
+        <label htmlFor="name">Add Student</label>
+        <div className="date-time"> date&time </div>
+      </div>
 
-      <div className="adinput" style={{display:"grid",gridTemplateColumns:"1fr 1fr"}}>
-        {/* <div> */}
-        <input
-        required={true}
-        className="text-gray-800 pl-2 rounded-lg"
-        type="text"
-        placeholder="Enter Adress 1"
-        onChange={(e) => {
-          setAd1(e.target.value);
-        }}
-      />
-        {/* </div> */}
-        {/* <div> */}
-        <input
-        required={true}
-        className="text-gray-800 pl-2 rounded-lg"
-        type="text"
-        placeholder="Enter Adress 2"
-        onChange={(e) => {
-          setAd2(e.target.value);
-        }}
-      />
-        {/* </div> */}
-       
-    </div>
-    <div className="info2-input" style={{display:"grid",gridTemplateColumns:"1fr 1fr 1fr"}}>
-    <input
-        required={true}
-        className="text-gray-800 pl-2 rounded-lg"
-        type="text"
-        placeholder="Landmark"
-        onChange={(e) => {
-          setLandmark(e.target.value);
-        }}
-      />
-      <input
-        required={true}
-        className="text-gray-800 pl-2 rounded-lg"
-        type="text"
-        placeholder="City"
-        onChange={(e) => {
-          setCity(e.target.value);
-        }}
-      />
-      <input
-        required={true}
-        className="text-gray-800 pl-2 rounded-lg"
-        type="number"
-        placeholder="Pincode"
-        onChange={(e) => {
-          setPin(e.target.value);
-        }}
-      />{" "}
       <br />
-      <button
-        className=" text-center  px-4 py-2  m-0 text-xs font-semibold tracking-widest text-white uppercase transition duration-150 ease-in-out bg-gray-900 border border-transparent rounded-md active:bg-gray-900 false"
-        onClick={() => {
-          handleform(
-            firstName,
-            middleName,
-            lastName,
-            batch,
-            division,
-            roll,
-            ad1,
-            ad2,
-            landmark,
-            city,
-            pin
-          );
-        }}
-      >
-        Submit
-      </button>
-    </div>
-      
+      <div className="info-input">
+        <input
+          required={true}
+          className="input_box"
+          type="text"
+          placeholder="First Name"
+          id="first-name"
+          onChange={(e) => {
+            setFirstName(e.target.value);
+          }}
+        />
+        <input
+          required={true}
+          className="input_box"
+          type="text"
+          placeholder="Middle Name"
+          id="middle-name"
+          onChange={(e) => {
+            setMiddleName(e.target.value);
+          }}
+        />
+        <input
+          required={true}
+          className="input_box"
+          type="text"
+          placeholder="Last Name"
+          id="last-name"
+          onChange={(e) => {
+            setLastName(e.target.value);
+          }}
+        />
+        <input
+          required={true}
+          className="input_box"
+          type="number"
+          placeholder="Enter Class"
+          onChange={(e) => {
+            setBatch(e.target.value);
+          }}
+        />
+        <input
+          required={true}
+          className="input_box"
+          type="division"
+          placeholder="Enter division"
+          onChange={(e) => {
+            setDivision(e.target.value);
+          }}
+        />
+        <input
+          required={true}
+          className="input_box"
+          type="number"
+          placeholder="Enter roll Number"
+          onChange={(e) => {
+            setRoll(e.target.value);
+          }}
+        />
+      </div>
+      <br />
+
+      <div className="adinput same">
+        <input
+          required={true}
+          className="input_box"
+          type="text"
+          placeholder="Enter Adress 1"
+          onChange={(e) => {
+            setAd1(e.target.value);
+          }}
+        />
+
+        <input
+          required={true}
+          className="input_box"
+          type="text"
+          placeholder="Enter Adress 2"
+          onChange={(e) => {
+            setAd2(e.target.value);
+          }}
+        />
+      </div>
+      <div className="info-input">
+        <input
+          required={true}
+          className="input_box"
+          type="text"
+          placeholder="Landmark"
+          onChange={(e) => {
+            setLandmark(e.target.value);
+          }}
+        />
+        <input
+          required={true}
+          className="input_box"
+          type="text"
+          placeholder="City"
+          onChange={(e) => {
+            setCity(e.target.value);
+          }}
+        />
+        <input
+          required={true}
+          className="input_box"
+          type="number"
+          placeholder="Pincode"
+          onChange={(e) => {
+            setPin(e.target.value);
+          }}
+        />{" "}
+        <br />
+        <button
+          className="button-5"
+          onClick={() => {
+            handleform(
+              firstName,
+              middleName,
+              lastName,
+              batch,
+              division,
+              roll,
+              ad1,
+              ad2,
+              landmark,
+              city,
+              pin
+            );
+          }}
+        >
+          Submit
+        </button>
+      </div>
     </div>
   );
 }

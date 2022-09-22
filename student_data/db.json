@@ -1,0 +1,32 @@
+{
+  "student_data": [
+    {
+      "id": 1,
+      "firstName": "Shreenath",
+      "middleName": "Dnyaneshwar",
+      "lastName": "Panchal",
+      "batch": 12,
+      "division": "B",
+      "roll": 7,
+      "ad1": "Shirur taj",
+      "ad2": "Apur",
+      "landmark": "Infront of shiva Temple",
+      "city": "Latur",
+      "pin": 413514
+    },
+    {
+      "firstName": "Prathmesh",
+      "middleName": "Anil",
+      "lastName": "Nerle",
+      "batch": "12",
+      "division": "B",
+      "roll": "47",
+      "ad1": "Mumbai",
+      "ad2": "Mumbai",
+      "landmark": "Post",
+      "city": "Mumbai",
+      "pin": "413515",
+      "id": 2
+    }
+  ]
+}
