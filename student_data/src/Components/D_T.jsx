@@ -1,12 +1,21 @@
-import React from "react";
+import React,{ useState,useEffect } from 'react';
 
-class D_T extends React.Component {
-  state = {
-    curTime: new Date().toLocaleString(),
-  };
-  render() {
-    return <p>{this.state.curTime}</p>;
-  }
+function D_T() {
+  const [time, setTime] = useState("");
+  const [date, setDate] = useState("");
+
+  useEffect(()=>{
+    setInterval(()=>{
+      setTime(new Date().toLocaleTimeString())
+      setDate(new Date().toLocaleDateString())
+    },1000)
+  })
+  return (
+    <>
+      {date} {" "} {time}
+    </>
+  )
 }
 
-export default D_T;
+export default D_T
+

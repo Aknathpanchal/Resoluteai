@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState} from "react";
 import React from "react";
 import axios from "axios";
 import D_T from "./D_T";
@@ -16,6 +16,7 @@ function Add() {
   const [city, setCity] = useState("");
   const [pin, setPin] = useState("");
   const [data, setdata] = useState([]);
+ 
 
   function handleform(
     firstName,
@@ -62,11 +63,28 @@ function Add() {
         console.log(res.data);
 
         setdata([...data, res.data]);
+        alert("Student Data Successfully Added!")
       });
     } else {
       alert("Please fill all required fields");
     }
   }
+
+  const rollLimit = 2;
+
+	const handleChangeRoll = (event) => {
+		if (rollLimit - event.target.value.length >= 0) {
+			setRoll(event.target.value);
+		}
+	};
+
+  const pinLimit = 6;
+
+	const handleChangePin = (event) => {
+		if (pinLimit - event.target.value.length >= 0) {
+			setPin(event.target.value);
+		}
+	};
 
   return (
     <form>
@@ -75,7 +93,8 @@ function Add() {
           <label htmlFor="name">Add Student</label>
           <div className="date-time">
             {" "}
-            <D_T />{" "}
+            <D_T/>
+            {" "}
           </div>
         </div>
 
@@ -111,58 +130,61 @@ function Add() {
               setLastName(e.target.value);
             }}
           />
-          <input
-            required={true}
-            className="input_box"
-            type="number"
-            placeholder="Enter Class"
-            onChange={(e) => {
-              setBatch(e.target.value);
-            }}
-          />
-          <input
-            required={true}
-            className="input_box"
-            type="division"
-            placeholder="Enter division"
-            onChange={(e) => {
-              setDivision(e.target.value);
-            }}
-          />
+         
+    <select placeholder='Select option'onChange={(e) => {setBatch(e.target.value)}}>
+            <option value='default'>Select Class</option>
+            <option value='I'>1</option>
+            <option value='II'>2</option>
+            <option value='III'>3</option>
+            <option value='IV'>4</option>
+            <option value='V'>5</option>
+            <option value='VI'>6</option>
+            <option value='VII'>7</option>
+            <option value='VIII'>8</option>
+            <option value='IX'>9</option>
+            <option value='X'>10</option>
+            <option value='XI'>11</option>
+            <option value='XI'>12</option>
+          </select>
+          <select placeholder='Select option'onChange={(e) => {setDivision(e.target.value)}}>
+            <option value='default'>Select Division</option>
+            <option value='A'>A</option>
+            <option value='B'>B</option>
+            <option value='C'>C</option>
+            <option value='D'>D</option>
+            <option value='E'>E</option>
+          </select>
+         
           <input
             required={true}
             className="input_box roll_no"
             type="number"
             name="roll_no"
-            // maxlength="4"
-            placeholder="Enter roll Number"
-            onChange={(e) => {
-              // if(e.target.value.length <= 2) {
-              setRoll(e.target.value);
-              // }
-            }}
+            value={roll}
+            placeholder="Enter Roll Number in Digits"
+            onChange={handleChangeRoll}
           />
         </div>
         <br />
 
         <div className="adinput same">
-          <input
+          <textarea
             required={true}
             className="input_box"
             type="text"
             name="ad1"
-            placeholder="Enter Adress 1"
+            placeholder="Address Line 1"
             onChange={(e) => {
               setAd1(e.target.value);
             }}
           />
 
-          <input
+          <textarea
             required={true}
             className="input_box"
             type="text"
             name="ad2"
-            placeholder="Enter Adress 2"
+            placeholder="Address Line 2"
             onChange={(e) => {
               setAd2(e.target.value);
             }}
@@ -194,10 +216,9 @@ function Add() {
             className="input_box"
             type="number"
             name="pin"
+            value={pin}
             placeholder="Pincode"
-            onChange={(e) => {
-              setPin(e.target.value);
-            }}
+            onChange={handleChangePin}
           />
           <button
             className="button-5"

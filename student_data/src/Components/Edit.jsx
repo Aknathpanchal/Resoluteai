@@ -21,51 +21,54 @@ function Edit() {
 
   const navigate = useNavigate();
 
-                const data = {
-                firstName: firstNames,
-                middleName: middleNames,
-                lastName: lastNames,
-                batch: batchs,
-                division: divisions,
-                roll: rolls,
-                ad1: ad1s,
-                ad2: ad2s,
-                landmark: landmarks,
-                city: citys,
-                pin: pins,
-              };
+  const data = {
+    firstName: firstNames,
+    middleName: middleNames,
+    lastName: lastNames,
+    batch: batchs,
+    division: divisions,
+    roll: rolls,
+    ad1: ad1s,
+    ad2: ad2s,
+    landmark: landmarks,
+    city: citys,
+    pin: pins,
+  };
   const handleEdit = (e) => {
-      e.preventDefault()
+    e.preventDefault();
 
-      let id = local.id
-    // if (
-    //   data.firstName &&
-    //   data.middleName &&
-    //   data.lastName &&
-    //   data.batch &&
-    //   data.division &&
-    //   data.roll &&
-    //   data.ad1 &&
-    //   data.ad2 &&
-    //   data.landmark &&
-    //   data.city &&
-    //   data.pin
-    // ) 
-    
-      console.log(id, data);
-      axios
-        .put(`http://localhost:8080/student_data/${id}`, data)
-        .then((res) => {
+    let id = local.id;
+
+    console.log(id, data);
+    axios
+      .put(`http://localhost:8080/student_data/${id}`, data)
+      .then((res) => {
         //   local.getdatas();
-          navigate("/manage_student")})
-          .then((res) => {
-            alert("Update Successfull")
-        })
-    }
-  
+        navigate("/manage_student");
+      })
+      .then((res) => {
+        alert("Update Successfull");
+      });
+  };
 
   const handleExit = () => {
     navigate("/manage_student");
+  };
+
+  const rollLimit = 2;
+
+  const handleChangeRoll = (event) => {
+    if (rollLimit - event.target.value.length >= 0) {
+      setRolls(event.target.value);
+    }
+  };
+
+  const pinLimit = 6;
+
+  const handleChangePin = (event) => {
+    if (pinLimit - event.target.value.length >= 0) {
+      setPins(event.target.value);
+    }
   };
 
   return (
@@ -84,11 +87,11 @@ function Edit() {
             required={true}
             className="input_box"
             type="text"
-            //placeholder="First Name"
             name="first-name"
+            placeholder="First Name"
             value={firstNames}
             onChange={(e) => {
-              setFirstNames(e.target.value)  ;
+              setFirstNames(e.target.value);
             }}
           />
           <input
@@ -96,6 +99,7 @@ function Edit() {
             className="input_box"
             type="text"
             name="middle-name"
+            placeholder="Middle Name"
             value={middleNames}
             onChange={(e) => {
               setMiddleNames(e.target.value);
@@ -105,74 +109,79 @@ function Edit() {
             required={true}
             className="input_box"
             type="text"
-            //placeholder="Last Name"
             name="last-name"
+            placeholder="Last Name"
             value={lastNames}
             onChange={(e) => {
               setLastNames(e.target.value);
             }}
           />
-          {/* <input
-            required={true}
-            className="input_box"
-            type="number"
-            //placeholder="Enter Class"
-            value={batchs}
+          <select
+            placeholder="Select option"
             onChange={(e) => {
               setBatchs(e.target.value);
             }}
-          /> */}
-          <select placeholder='Select option'onChange={(e) => {setBatchs(e.target.value)}}>
-            <option value='default'>Class</option>
-            <option value='10'>10</option>
-            <option value='11'>11</option>
-            <option value='12'>12</option>
+          >
+            <option value="default">Select Class</option>
+            <option value="I">1</option>
+            <option value="II">2</option>
+            <option value="III">3</option>
+            <option value="IV">4</option>
+            <option value="V">5</option>
+            <option value="VI">6</option>
+            <option value="VII">7</option>
+            <option value="VIII">8</option>
+            <option value="IX">9</option>
+            <option value="X">10</option>
+            <option value="XI">11</option>
+            <option value="XI">12</option>
           </select>
-          <input
-            required={true}
-            className="input_box"
-            type="division"
-            //placeholder="Enter division"
-            value={divisions}
+
+          <select
+            placeholder="Select option"
             onChange={(e) => {
               setDivisions(e.target.value);
             }}
-          />
+          >
+            <option value="default">Select Division</option>
+            <option value="A">A</option>
+            <option value="B">B</option>
+            <option value="C">C</option>
+            <option value="D">D</option>
+            <option value="I">E</option>
+          </select>
           <input
             required={true}
             className="input_box roll_no"
+            placeholder="Enter Roll Number in Digits"
             type="number"
             name="roll_no"
-            // maxlength="4"
-            //placeholder="Enter roll Number"
             value={rolls}
-            onChange={(e) => {
-              setRolls(e.target.value);
-            }}
+            onChange={handleChangeRoll}
           />
         </div>
         <br />
 
         <div className="adinput same">
-          <input
+          <textarea
             required={true}
             className="input_box"
             type="text"
+            placeholder="Address Line 1"
             name="ad1"
             value={ad1s}
-            //placeholder="Enter Adress 1"
             onChange={(e) => {
               setAd1s(e.target.value);
             }}
           />
 
-          <input
+          <textarea
             required={true}
             className="input_box"
             type="text"
+            placeholder="Address Line 2"
             name="ad2"
             value={ad2s}
-            //placeholder="Enter Adress 2"
             onChange={(e) => {
               setAd2s(e.target.value);
             }}
@@ -184,7 +193,7 @@ function Edit() {
             className="input_box"
             type="text"
             name="landmark"
-            //placeholder="Landmark"
+            placeholder="Landmark"
             value={landmarks}
             onChange={(e) => {
               setLandmarks(e.target.value);
@@ -194,8 +203,8 @@ function Edit() {
             required={true}
             className="input_box"
             type="text"
+            placeholder="City"
             name="city"
-            //placeholder="City"
             value={citys}
             onChange={(e) => {
               setCitys(e.target.value);
@@ -205,17 +214,12 @@ function Edit() {
             required={true}
             className="input_box"
             type="number"
+            placeholder="Pincode"
             name="pin"
             value={pins}
-            //placeholder="Pincode"
-            onChange={(e) => {
-              setPins(e.target.value);
-            }}
+            onChange={handleChangePin}
           />
-          <button
-            className="button-5"
-            type='submit'
-          >
+          <button className="button-5" type="submit">
             Update
           </button>
           <button className="button-5" onClick={handleExit}>
@@ -225,6 +229,5 @@ function Edit() {
       </div>
     </form>
   );
-
 }
 export default Edit;

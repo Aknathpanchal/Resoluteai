@@ -35,7 +35,11 @@ function Body(elem) {
         <span
           className="relative"
           onClick={() => {
-            elem.deletedata(elem.id);
+            if (window.confirm(" Are you sure?")) {
+              elem.deletedata(elem.id);
+              window.open("/manage_student", "Delete Successfull!");
+            }
+            // elem.deletedata(elem.id);
           }}
         >
           <i className="fa-sharp fa-solid fa-trash"></i>

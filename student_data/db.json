@@ -1,18 +1,32 @@
 {
   "student_data": [
     {
-      "firstName": "Bhagesh",
-      "middleName": "Mulchand",
-      "lastName": "Madavi",
-      "batch": "11",
-      "division": "A",
-      "roll": "22",
-      "ad1": "Goregaon",
-      "ad2": "Gondia",
-      "landmark": "Postmaster",
+      "firstName": "Prathmesh",
+      "middleName": "Anil",
+      "lastName": "Nerle",
+      "batch": "III",
+      "division": "C",
+      "roll": "99",
+      "ad1": "old chame house,ahemedhpur-413515",
+      "ad2": "old chame house,ahemedhpur-413515",
+      "landmark": "Near Howrah Bridge",
       "city": "Latur",
       "pin": "413515",
       "id": 1
+    },
+    {
+      "firstName": "Bhagesh",
+      "middleName": "Mulchand",
+      "lastName": "Madavi",
+      "batch": "II",
+      "division": "C",
+      "roll": "56",
+      "ad1": "old chame house,ahemedhpur-413515",
+      "ad2": "old chame house,ahemedhpur-413515",
+      "landmark": "Thana Squre",
+      "city": "Latur",
+      "pin": "413515",
+      "id": 2
     }
   ]
 }

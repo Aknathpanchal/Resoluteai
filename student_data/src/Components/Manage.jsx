@@ -2,13 +2,20 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Body from "./Body";
 import D_T from "./D_T";
+import loader from './loder.gif'
 import noData from './noData.jpg'
 function Manage() {
   const [data, setdata] = useState([]);
+  const [loding, setLoding] = useState(false);
+  const [error,setError] = useState(false)
 
   const getdatas = () => {
+    setLoding(true);
     axios.get("http://localhost:8080/student_data").then((res) => {
       setdata([...res.data]);
+      setLoding(
+        false
+      )
     });
   };
 
@@ -31,14 +38,22 @@ function Manage() {
           <D_T />
         </div>
       </div>
-      { data.length > 0 ?(
+      { loding ? ( 
+      <>
+      <h1 className="text-center">Loading...</h1>
+         <img style={{width:"50%"}} src={loader}/>
+         </>
+      ) : data.length==0 ? (   <>
+        <h1 className="text-center">No Data Found !</h1>
+           <img style={{width:"50%"}} src={noData}/>
+           </>) : (
       <table className="head">
         <thead>
           <tr>
-            <td className="head1">Name</td>
+            <td className="head1 he">Name</td>
             <td className="head1">Class</td>
             <td className="head1">Roll No.</td>
-            <td className="head1">View/Edit/Delete</td>
+            <td className="head1 ad">View/Edit/Delete</td>
           </tr>
         </thead>
         <tbody>
@@ -55,12 +70,7 @@ function Manage() {
             })}
         </tbody>
       </table>)
-      : ( 
-      <>
-      <h1 className="text-center">No Data Found!</h1>
-         <img style={{width:"50%"}} src={noData}/>
-         </>
-      )}
+      }
 
     </div>
   );
