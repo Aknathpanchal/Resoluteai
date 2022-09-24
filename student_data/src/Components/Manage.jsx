@@ -11,7 +11,7 @@ function Manage() {
 
   const getdatas = () => {
     setLoding(true);
-    axios.get("http://localhost:8080/student_data").then((res) => {
+    axios.get("https://thawing-anchorage-36314.herokuapp.com/student_data").then((res) => {
       setdata([...res.data]);
       setLoding(
         false
@@ -21,7 +21,7 @@ function Manage() {
 
   const deletedata = (id) => {
     console.log(id);
-    axios.delete(`http://localhost:8080/student_data/${id}`).then((res) => {
+    axios.delete(`https://thawing-anchorage-36314.herokuapp.com/student_data/${id}`).then((res) => {
       getdatas();
     });
   };
@@ -41,7 +41,7 @@ function Manage() {
       { loding ? ( 
       <>
       <h1 className="text-center">Loading...</h1>
-         <img style={{width:"50%"}} src={loader}/>
+         <img style={{width:"30%"}} src={loader}/>
          </>
       ) : data.length==0 ? (   <>
         <h1 className="text-center">No Data Found !</h1>

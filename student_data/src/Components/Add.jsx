@@ -2,6 +2,7 @@ import { useState} from "react";
 import React from "react";
 import axios from "axios";
 import D_T from "./D_T";
+import { useNavigate, useRouteLoaderData } from "react-router-dom";
 
 function Add() {
   const [firstName, setFirstName] = useState("");
@@ -16,9 +17,11 @@ function Add() {
   const [city, setCity] = useState("");
   const [pin, setPin] = useState("");
   const [data, setdata] = useState([]);
+
+  const navigate = useNavigate();
  
 
-  function handleform(
+  function handleform(e,
     firstName,
     middleName,
     lastName,
@@ -31,6 +34,7 @@ function Add() {
     city,
     pin
   ) {
+    e.preventDefault();
     if (
       firstName &&
       middleName &&
@@ -57,13 +61,27 @@ function Add() {
         city,
         pin,
       };
-      axios.post("http://localhost:8080/student_data", obj).then((res) => {
+      axios.post("https://thawing-anchorage-36314.herokuapp.com/student_data", obj).then((res) => {
         console.log(res);
 
         console.log(res.data);
 
         setdata([...data, res.data]);
         alert("Student Data Successfully Added!")
+        // navigate("/");
+
+        setFirstName("")
+        setMiddleName("")
+        setLastName("")
+        setBatch("")
+        setDivision("")
+        setRoll("")
+        setAd1("")
+        setAd2("")
+        setLandmark("")
+        setCity("")
+        setPin("")
+
       });
     } else {
       alert("Please fill all required fields");
@@ -104,6 +122,7 @@ function Add() {
             required={true}
             className="input_box"
             type="text"
+            value={firstName}
             placeholder="First Name"
             name="first-name"
             onChange={(e) => {
@@ -115,6 +134,7 @@ function Add() {
             className="input_box"
             type="text"
             placeholder="Middle Name"
+            value={middleName}
             name="middle-name"
             onChange={(e) => {
               setMiddleName(e.target.value);
@@ -125,13 +145,14 @@ function Add() {
             className="input_box"
             type="text"
             placeholder="Last Name"
+            value={lastName}
             name="last-name"
             onChange={(e) => {
               setLastName(e.target.value);
             }}
           />
          
-    <select placeholder='Select option'onChange={(e) => {setBatch(e.target.value)}}>
+    <select placeholder='Select option' value={batch} onChange={(e) => {setBatch(e.target.value)}}>
             <option value='default'>Select Class</option>
             <option value='I'>1</option>
             <option value='II'>2</option>
@@ -146,7 +167,8 @@ function Add() {
             <option value='XI'>11</option>
             <option value='XI'>12</option>
           </select>
-          <select placeholder='Select option'onChange={(e) => {setDivision(e.target.value)}}>
+
+          <select placeholder='Select option' value={division} onChange={(e) => {setDivision(e.target.value)}}>
             <option value='default'>Select Division</option>
             <option value='A'>A</option>
             <option value='B'>B</option>
@@ -173,6 +195,7 @@ function Add() {
             className="input_box"
             type="text"
             name="ad1"
+            value={ad1}
             placeholder="Address Line 1"
             onChange={(e) => {
               setAd1(e.target.value);
@@ -184,6 +207,7 @@ function Add() {
             className="input_box"
             type="text"
             name="ad2"
+            value={ad2}
             placeholder="Address Line 2"
             onChange={(e) => {
               setAd2(e.target.value);
@@ -195,6 +219,7 @@ function Add() {
             required={true}
             className="input_box"
             type="text"
+            value={landmark}
             name="landmark"
             placeholder="Landmark"
             onChange={(e) => {
@@ -206,6 +231,7 @@ function Add() {
             className="input_box"
             type="text"
             name="city"
+            value={city}
             placeholder="City"
             onChange={(e) => {
               setCity(e.target.value);
@@ -222,8 +248,8 @@ function Add() {
           />
           <button
             className="button-5"
-            onClick={() => {
-              handleform(
+            onClick={(e) => {
+              handleform(e,
                 firstName,
                 middleName,
                 lastName,

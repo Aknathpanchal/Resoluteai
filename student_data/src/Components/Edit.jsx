@@ -41,7 +41,7 @@ function Edit() {
 
     console.log(id, data);
     axios
-      .put(`http://localhost:8080/student_data/${id}`, data)
+      .put(`https://thawing-anchorage-36314.herokuapp.com/student_data/${id}`, data)
       .then((res) => {
         //   local.getdatas();
         navigate("/manage_student");

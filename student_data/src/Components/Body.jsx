@@ -37,9 +37,8 @@ function Body(elem) {
           onClick={() => {
             if (window.confirm(" Are you sure?")) {
               elem.deletedata(elem.id);
-              window.open("/manage_student", "Delete Successfull!");
             }
-            // elem.deletedata(elem.id);
+            navigate("/manage_student");
           }}
         >
           <i className="fa-sharp fa-solid fa-trash"></i>
