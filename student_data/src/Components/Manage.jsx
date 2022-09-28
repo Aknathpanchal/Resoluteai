@@ -33,7 +33,7 @@ function Manage() {
   return (
     <div className="add">
       <div className="same">
-        <label htmlFor="name">Edit Student Data</label>
+        <label htmlFor="name">Manage Students</label>
         <div className="date-time">
           <D_T />
         </div>
